@@ -43,7 +43,7 @@ const LOCALIZED_SYNONYM_GROUPS = [
     },
     synonyms: {
       default: [
-        "peanut", "peanuts", "arachide", "cacahuète", "cacahuete", "cacahuètes",
+        "peanut", "peanuts", "arachide", "cacahuète", "cacahuete", "cacahuètes", "cacahuetes",
         "maní", "mani", "arachidi", "erdnuss", "erdnüsse", "erdnusse",
         "amendoim", "amendoins", "मूंगफली", "ピーナッツ", "落花生", "땅콩",
         "đậu phộng", "dau phong", "lạc", "lac", "花生"
@@ -68,9 +68,9 @@ const LOCALIZED_SYNONYM_GROUPS = [
     },
     synonyms: {
       default: [
-        "gluten", "wheat", "flour", "bread", "biscuit", "pasta", "cake", "crackers",
-        "blé", "ble", "farine", "pain", "génoise", "genoise", "boudoir", "pâte", "pate", "nouilles", "pizza",
-        "trigo", "harina", "galleta", "glutine", "grano", "farina", "pane",
+        "gluten", "wheat", "flour", "bread", "biscuit", "biscuits", "biscuité", "biscuitée", "biscuite", "biscuitee", "pasta", "cake", "crackers",
+        "blé", "ble", "farine", "pain", "génoise", "genoise", "boudoir",
+        "trigo", "harina", "galleta", "glutine", "grano", "farina",
         "weizen", "mehl", "brot", "nudeln", "glúten", "farinha", "pão", "pao", "massa",
         "ग्लूटेन", "गेहूं", "आटा", "ब्रेड", "बिस्कुट",
         "グルテン", "小麦", "小麦粉", "パン", "パスタ", "ビスケット",
@@ -179,7 +179,152 @@ const ALLERGEN_ALIASES = {
   coriander: ['coriander', 'cilantro', 'ngò', 'ngo', 'rau mùi', 'rau muoi', 'rau thơm', 'rau thom', 'persil vietnamien', 'vietnamese coriander', 'culantro', 'chinese parsley', 'coriandre', 'koriander', 'coriandolo', 'coentro', '香菜', 'パクチー', '고수', 'धनिया'],
 };
 
+const LOCALIZED_GENERIC_RISKS = {
+  peanut: [
+    "vegetable oil", "house sauce", "asian sauce", "peanut sauce", "satay",
+    "huile vegetale", "huile végétale", "sauce maison", "sauce asiatique", "sauce cacahuète",
+    "aceite vegetal", "salsa de la casa", "salsa asiatica", "salsa de mani",
+    "olio vegetale", "salsa della casa", "salsa asiatica", "salsa di arachidi",
+    "pflanzenöl", "pflanzenol", "hausgemachte soße", "asiatische soße", "erdnusssoße",
+    "óleo vegetal", "oleo vegetal", "molho da casa", "molho asiatico", "molho de amendoim",
+    "dầu thực vật", "dau thuc vat", "nước sốt nhà làm", "sốt châu á", "sốt đậu phộng",
+    "植物油", "自家製ソース", "アジア風ソース", "ピーナッツソース", "サテ",
+    "식물성 기름", "수제 소스", "아시아 소스", "땅콩 소스", "사테",
+    "植物油", "秘制酱", "亚洲风味酱", "花生酱", "沙爹",
+    "वनस्पति तेल", "घर की चटनी", "एशियाई चटनी", "मूंगफली की चटनी"
+  ],
+  gluten: [
+    "tiramisu", "biscuit", "boudoir", "genoise", "génoise", "pate a tarte", "pâte a tarte", "tarte du jour", "tarte", "pate", "pâte", "pizza", "nouilles", "pane", "pané", "cheesecake", "sauce soja", "soja", "nems", "samoussas", "beignets", "chapelure", "panure", "pates", "pasta", "riz saute", "beer", "biere",
+    "sponge cake", "pie crust", "pie of the day", "pie", "dough", "noodles", "breaded", "soy sauce", "spring rolls", "samosas", "fritters", "breadcrumbs", "fried rice",
+    "galleta", "bizcocho", "masa de tarta", "tarta del dia", "tarta", "masa", "fideos", "empanizado", "salsa de soja", "rollitos de primavera", "samosas", "buñuelos", "pan rallado", "arroz frito", "cerveza",
+    "biscotto", "pan di spagna", "crosta di torta", "torta del giorno", "torta", "impasto", "tagliatelle", "impanato", "salsa di soia", "involtini primavera", "samosa", "frittelle", "pangrattato", "riso fritto", "birra",
+    "keks", "biskuit", "kuchenteig", "tageskuchen", "kuchen", "teig", "nudeln", "paniert", "sojasauce", "frühlingsrollen", "samosas", "krapfen", "paniermehl", "gebratener reis", "bier",
+    "biscoito", "massa de torta", "torta do dia", "torta", "massa", "macarrão", "empanado", "molho de soja", "rolinhos primavera", "chamuças", "sonhos", "farinha de rosca", "arroz frito", "cerveja",
+    "bánh quy", "banh quy", "đế bánh", "de banh", "bánh nướng", "banh nuong", "bột", "bot", "mì", "mi", "chiên xù", "chien xu", "nước tương", "nuoc tuong", "chả giò", "cha gio", "cơm chiên", "com chien", "bia",
+    "ビスケット", "スポンジケーキ", "パイ生地", "本日のタルト", "タルト", "生地", "麺", "パン粉焼き", "醤油", "春巻き", "サモサ", "フリッター", "パン粉", "チャーハン", "ビール",
+    "비스킷", "스펀지 케이크", "파이 껍질", "오늘의 타르트", "타르트", "반죽", "국수", "빵가루 입힌", "간장", "춘권", "사모사", "튀김", "빵가루", "볶음밥", "맥주",
+    "饼干", "海绵蛋糕", "派皮", "今日蛋挞", "蛋挞", "面团", "面条", "裹面包屑", "酱油", "春卷", "咖喱角", "油炸饼", "面包屑", "炒饭", "啤酒",
+    "बिस्कुट", "स्पंज केक", "पाई क्रस्ट", "आज की पाई", "पाई", "आटा", "नूडल्स", "ब्रेड किया हुआ", "सोया सॉस", "स्प्रिंग रोल", "समोसा", "पकौड़े", "ब्रेडक्रंब", "तला हुआ चावल", "बियर"
+  ],
+  milk: [
+    "puree maison", "purée maison", "risotto", "veloute", "velouté", "soupe cremeuse", "soupe crémeuse", "creme", "crème", "fromage", "butter", "beurre",
+    "house puree", "creamy soup", "cream", "cheese",
+    "pure de la casa", "sopa cremosa", "crema", "queso", "mantequilla",
+    "purea della casa", "zuppa cremosa", "crema", "formaggio", "burro",
+    "hausgemachtes püree", "cremige suppe", "creme", "sahne", "käse", "butter",
+    "purê da casa", "sopa cremosa", "creme", "queijo", "manteiga",
+    "khoai tây nghiền", "khoai tay nghien", "súp kem", "sup kem", "kem", "phô mai", "pho mai", "bơ", "bo",
+    "自家製ピューレ", "リゾット", "クリーミーなスープ", "クリーム", "チーズ", "バター",
+    "수제 퓌레", "리조또", "크림 수프", "크림", "치즈", "버터",
+    "自制土豆泥", "意大利烩饭", "奶油汤", "奶油", "奶酪", "黄油",
+    "घर की प्यूरी", "रिसोट्टो", "मलाईदार सूप", "क्रीम", "पनीर", "मक्खन"
+  ],
+  pork: [
+    "carbonara", "lardons", "pancetta", "bacon", "porc", "charcuterie", "ramen", "bouillon", "viande",
+    "pork", "cold cuts", "broth", "meat",
+    "cerdo", "embutidos", "caldo", "carne",
+    "maiale", "salumi", "brodo", "carne",
+    "schwein", "aufschnitt", "brühe", "fleisch",
+    "porco", "frios", "caldo", "carne",
+    "thịt heo", "thit heo", "thịt nguội", "thit nguoi", "nước dùng", "nuoc dung", "thịt", "thit",
+    "カルボナーラ", "ベーコン", "パンチェッタ", "豚肉", "シャルキュトリー", "ラーメン", "スープ", "肉",
+    "까르보나라", "베이컨", "판체타", "돼지고기", "샤퀴테리", "라멘", "국물", "고기",
+    "培根意面", "培根", "猪肉", "熟食", "拉面", "肉汤", "肉",
+    "कार्बोनारा", "बेकन", "पैनसेटा", "सूअर का मांस", "रामেন", "शोरबा", "मांस"
+  ],
+  vegetarian: [
+    "salade cesar", "caesar salad", "anchois", "chicken", "poulet", "steak",
+    "anchovies",
+    "ensalada cesar", "anchoas", "pollo",
+    "insalata cesare", "acciughe", "pollo", "bistecca",
+    "caesar-salat", "sardellen", "hähnchen", "hahnchen",
+    "salada caesar", "anchovas", "frango", "bife",
+    "salad caesar", "cá cơm", "ca com", "gà", "ga", "bít tết", "bit tet",
+    "シーザーサラダ", "アンチョビ", "鶏肉", "ステーキ",
+    "시저 샐러드", "멸치", "닭고기", "스테이크",
+    "凯撒沙拉", "凤尾鱼", "鸡肉", "牛排",
+    "सीज़र सलाद", "एंकोवीज़", "चिकन", "स्टेक"
+  ],
+  vegan: [
+    "pizza vegetarienne", "pizza végétarienne", "fromage", "creme", "crème", "oeufs", "oeuf",
+    "vegetarian pizza", "cheese", "cream", "eggs", "egg",
+    "pizza vegetariana", "queso", "crema", "huevos", "huevo",
+    "pizza vegetariana", "formaggio", "crema", "uova", "uovo",
+    "vegetarische pizza", "käse", "kase", "creme", "sahne", "eier", "ei",
+    "pizza vegetariana", "queijo", "creme", "ovos", "ovo",
+    "pizza chay", "phô mai", "pho mai", "kem", "trứng", "trung",
+    "ベジタリアンピザ", "チーズ", "クリーム", "卵",
+    "채식 피자", "치즈", "크림", "달걀", "계란",
+    "素食比萨", "奶酪", "奶油", "鸡蛋", "蛋",
+    "शाकाहारी पिज्जा", "पनीर", "क्रीम", "अंडे", "अंडा"
+  ],
+  halal: [
+    "ramen", "bouillon", "poulet", "viande", "meat", "porc", "bacon", "pancetta", "carbonara", "lardons", "charcuterie",
+    "broth", "chicken", "pork", "cold cuts",
+    "caldo", "pollo", "carne", "cerdo", "embutidos",
+    "brodo", "pollo", "carne", "maiale", "salumi",
+    "brühe", "hähnchen", "fleisch", "schwein", "aufschnitt",
+    "caldo", "frango", "carne", "porco", "frios",
+    "nước dùng", "nuoc dung", "gà", "ga", "thịt", "thit", "thịt heo", "thit heo", "thịt nguội", "thit nguoi",
+    "ラーメン", "スープ", "鶏肉", "肉", "豚肉", "ベーコン", "シャルキュトリー",
+    "라멘", "국물", "닭고기", "고기", "돼지고기", "베이컨", "샤퀴테리",
+    "拉面", "肉汤", "鸡肉", "肉", "猪肉", "培根", "熟食",
+    "रामেন", "शोरबा", "चिकन", "मांस", "सूअर का मांस", "बेकन"
+  ],
+  kosher: [
+    "ramen", "bouillon", "poulet", "viande", "meat", "porc", "bacon", "pancetta", "carbonara", "lardons", "charcuterie",
+    "broth", "chicken", "pork", "cold cuts",
+    "caldo", "pollo", "carne", "cerdo", "embutidos",
+    "brodo", "pollo", "carne", "maiale", "salumi",
+    "brühe", "hähnchen", "fleisch", "schwein", "aufschnitt",
+    "caldo", "frango", "carne", "porco", "frios",
+    "nước dùng", "nuoc dung", "gà", "ga", "thịt", "thit", "thịt heo", "thit heo", "thịt nguội", "thit nguoi",
+    "ラーメン", "スープ", "鶏肉", "肉", "豚肉", "ベーコン", "シャルキュトリー",
+    "라멘", "국물", "닭고기", "고기", "돼지고기", "베이컨", "샤퀴테리",
+    "拉面", "肉汤", "鸡肉", "肉", "猪肉", "培根", "熟食",
+    "रामেন", "शोरबा", "चिकन", "मांस", "सूअर का मांस", "बेकन"
+  ],
+  low_carb: [
+    "poisson pane", "poisson pané", "fish and chips", "fish", "smoothie", "granola", "dessert", "fruit", "fruits", "riz", "nouilles", "pomme de terre", "patates", "pates", "pasta",
+    "breaded fish", "rice", "noodles", "potato", "potatoes",
+    "pescado empanizado", "pescado", "arroz", "fideos", "papa", "papas", "pasta",
+    "pesce impanato", "pesce", "riso", "tagliatelle", "patata", "patate", "pasta",
+    "panierter fisch", "fisch", "reis", "nudeln", "kartoffel", "kartoffeln", "pasta",
+    "peixe empanado", "peixe", "arroz", "macarrão", "batata", "batatas", "massa",
+    "cá tẩm bột", "ca tam bot", "cá", "ca", "cơm", "com", "mì", "mi", "khoai tây", "khoai tay",
+    "白身魚のフライ", "魚", "スムージー", "グラノーラ", "デザート", "フルーツ", "果物", "ご飯", "麺", "じゃがいも", "パスタ",
+    "생선 튀김", "생선", "스무디", "그래놀라", "디저트", "과일", "밥", "국수", "감자", "파스타",
+    "炸鱼", "鱼", "冰沙", "麦片", "甜点", "水果", "米饭", "面条", "土豆", "意大利面",
+    "ब्रेड वाली मछली", "मछली", "स्मूदी", "ग्रैनोला", "मिठाई", "फल", "चावल", "नूडल्स", "आलू", "पास्ता"
+  ],
+  low_sugar: [
+    "smoothie", "granola", "dessert", "fruit", "fruits",
+    "postre", "fruta", "frutas",
+    "dolce", "frutta",
+    "nachtisch", "obst",
+    "sobremesa", "fruta", "frutas",
+    "tráng miệng", "trang mieng", "trái cây", "trai cay",
+    "スムージー", "グラノーラ", "デザート", "フルーツ", "果物",
+    "스무디", "그래놀라", "디저트", "과일",
+    "冰沙", "麦片", "甜点", "水果",
+    "स्मूदी", "ग्रैनोला", "मिठाई", "फल"
+  ],
+  high_protein: [
+    "salade proteinee", "salade protéinée", "protein salad",
+    "ensalada de proteinas", "ensalada proteica",
+    "insalata proteica",
+    "proteinsalat",
+    "salada de proteinas",
+    "salad protein",
+    "プロテインサラダ",
+    "단백질 샐러드",
+    "高蛋白沙拉",
+    "प्रोटीन सलाद"
+  ]
+};
+
 module.exports = {
   LOCALIZED_SYNONYM_GROUPS,
-  ALLERGEN_ALIASES
+  ALLERGEN_ALIASES,
+  LOCALIZED_GENERIC_RISKS
 };
