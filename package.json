@@ -1,13 +1,15 @@
 {
   "name": "allergens",
   "version": "1.0.0",
-  "main": "index.js",
-  "module": "index.mjs",
+  "type": "module",
+  "main": "index.cjs",
+  "module": "index.js",
   "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   }
 }
+

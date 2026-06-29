@@ -1,6 +1,3 @@
-// ESM entry point — re-exports from the CJS build so that Vite/Rollup
-// can resolve named imports like:
-//   import { LOCALIZED_SYNONYM_GROUPS } from 'allergens'
-import cjs from './index.js';
+// ESM entry point — index.js is native ESM, this just re-exports it.
+export { LOCALIZED_SYNONYM_GROUPS, ALLERGEN_ALIASES, LOCALIZED_GENERIC_RISKS } from './index.js';
 
-export const { LOCALIZED_SYNONYM_GROUPS, ALLERGEN_ALIASES, LOCALIZED_GENERIC_RISKS } = cjs;
