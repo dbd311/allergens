@@ -194,8 +194,8 @@ const LOCALIZED_GENERIC_RISKS = {
     "वनस्पति तेल", "घर की चटनी", "एशियाई चटनी", "मूंगफली की चटनी"
   ],
   gluten: [
-    "tiramisu", "biscuit", "boudoir", "genoise", "génoise", "pate a tarte", "pâte a tarte", "tarte du jour", "tarte", "pate", "pâte", "pizza", "nouilles", "pane", "pané", "cheesecake", "sauce soja", "soja", "nems", "samoussas", "beignets", "chapelure", "panure", "pates", "pasta", "riz saute", "beer", "biere",
-    "sponge cake", "pie crust", "pie of the day", "pie", "dough", "noodles", "breaded", "soy sauce", "spring rolls", "samosas", "fritters", "breadcrumbs", "fried rice",
+    "tiramisu", "biscuit", "boudoir", "genoise", "génoise", "pate a tarte", "pâte a tarte", "tarte du jour", "tarte", "pate", "pâte", "pizza", "nouilles", "pane", "pané", "crepe", "crêpe", "crepes", "crêpes", "galette", "cheesecake", "sauce soja", "soja", "nems", "samoussas", "beignets", "chapelure", "panure", "pates", "pasta", "riz saute", "beer", "biere",
+    "sponge cake", "pie crust", "pie of the day", "pie", "dough", "noodles", "breaded", "pancake", "pancakes", "crepe", "crepes", "soy sauce", "spring rolls", "samosas", "fritters", "breadcrumbs", "fried rice",
     "galleta", "bizcocho", "masa de tarta", "tarta del dia", "tarta", "masa", "fideos", "empanizado", "salsa de soja", "rollitos de primavera", "samosas", "buñuelos", "pan rallado", "arroz frito", "cerveza",
     "biscotto", "pan di spagna", "crosta di torta", "torta del giorno", "torta", "impasto", "tagliatelle", "impanato", "salsa di soia", "involtini primavera", "samosa", "frittelle", "pangrattato", "riso fritto", "birra",
     "keks", "biskuit", "kuchenteig", "tageskuchen", "kuchen", "teig", "nudeln", "paniert", "sojasauce", "frühlingsrollen", "samosas", "krapfen", "paniermehl", "gebratener reis", "bier",
