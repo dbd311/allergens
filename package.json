@@ -2,5 +2,12 @@
   "name": "allergens",
   "version": "1.0.0",
   "main": "index.js",
-  "types": "index.d.ts"
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  }
 }
